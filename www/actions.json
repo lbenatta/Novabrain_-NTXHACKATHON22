@@ -1,0 +1,90 @@
+[
+    {
+        "name":"action rapide",
+        "child":[
+            {
+                "name":"Musique",
+                "child":[
+                    {
+                        "name":"musique",
+                        "child":
+                        [
+                            {
+                                "name":"laylow",
+                                "child":
+                                [
+                                    {
+                                        "name":"ordinateur",
+                                        "exec":"'nova.sendCmd(\"aaa\", \"google-chrome https://open.spotify.com/artist/0LnhY2fzptb0QEs5Q5gM7S?si=BvIDN92JQWmcisA5q52sIg\")'"
+                                    },
+                                    {
+                                        "name":"téléphone",
+                                        "exec":"'nova.sendCmd(\"aad\", \"termux-open-url  https://open.spotify.com/artist/0LnhY2fzptb0QEs5Q5gM7S?si=BvIDN92JQWmcisA5q52sIg\")'"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "name":"livre audio"
+                    }
+                ]
+            },
+            {
+                "name":"Video",
+                "child":[
+                    {
+                        "name":"youtube",
+                        "child":[
+                            {
+                                "name":"pc",
+                                "exec":"'nova.sendCmd(\"aaa\", \"google-chrome http://youtube.com\")'"
+                            },
+                            {
+                                "name":"téléphone",
+                                "exec":"'nova.sendCmd(\"aad\", \"termux-open-url http://youtube.com\")'"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name":"appareille",
+        "child":[
+            {
+                "name":"ordinateur portable",
+                "child":[
+                    {
+                        "name":"faire sonner"
+                    },
+                    {
+                        "name":"verouiller"
+                    }
+                ]
+            },
+            {
+                "name":"telephone",
+                "child":
+                [
+                    {
+                        "name":"flash",
+                        "child":[
+                            {
+                                "name":"on",
+                                "exec":"'nova.sendCmd(\"aad\", \"termux-torch on\")'"
+                            },
+                            {
+                                "name":"off",
+                                "exec":"'nova.sendCmd(\"aad\", \"termux-torch off\")'"
+                            }]
+                    },
+                    {
+                        "name":"faire sonner"
+                    }
+                ]
+            }
+        ]
+    }
+]

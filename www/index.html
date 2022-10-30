@@ -1,0 +1,143 @@
+<html>
+    <head>
+    </head>
+    <body ng-app="app" ng-controller="allCtrl">
+        <div class="menu">
+            <div class="item" ng-repeat="item in tab" style="{{elemSelected($index)}}">{{item.name}}</div>
+        </div> 
+
+    </body>
+    <script src="/eel.js">cd </script>
+    <script src="angular.min.js"></script>
+    <script>
+        var app = angular.module("app", []);
+
+
+
+		function speak(val)
+		{
+			var synth = window.speechSynthesis;
+			//console.log(synth.getVoices());
+			voix = synth.getVoices()[6];
+			var ut = new SpeechSynthesisUtterance(val);
+			ut.voice = voix;
+			synth.speak(ut);
+		}
+
+
+
+        app.controller("allCtrl", function($scope, $http, $interval){
+            $scope.menu = [];
+            $scope.tab = [];
+            $scope.cur = [];
+
+
+            $scope.elemSelected = function(n)
+            {
+                if (n == $scope.cur)
+                {
+                    return "background-color:#0FF6";
+                }
+                else
+                {
+                    return "background-color:#0FF2";
+                }
+            }
+
+            $scope.loadMenu = function()
+            {
+                $http.get("actions.json")
+                .then(function(e){
+                    console.log(e);
+                    $scope.menu = e.data;
+                    $scope.tab = $scope.menu;
+                });
+            }
+            $scope.loadMenu();
+
+            $interval(function()
+            {
+                if ($scope.tab == undefined)
+                {
+                    $scope.tab = $scope.menu;
+                }
+                $scope.cur++;
+                $scope.cur = $scope.cur % $scope.tab.length;
+                speak($scope.tab[$scope.cur].name);
+                
+            }, 2000);
+        
+            $scope.trigger = function()
+            {
+                if ($scope.tab[$scope.cur].exec != undefined)
+                {
+                    console.log($scope.tab[$scope.cur].exec);
+                    eel.sendAction($scope.tab[$scope.cur].exec);
+                    $scope.tab = $scope.menu;
+                    $scope.$apply();
+                }
+                else
+                {
+                    console.log($scope.tab[$scope.cur]);
+                    $scope.tab = $scope.tab[$scope.cur].child;
+                    if ($scope.tab == undefined)
+                    {
+                        $scope.tab = $scope.menu;
+                    }
+                    $scope.$apply();
+                }
+            }
+        });
+
+        eel.expose(js_trigger); // Expose this function to Python
+        function js_trigger() {
+            angular.element(document.body).scope().trigger();
+        }
+
+
+        document.body.onkeydown = function(e)
+        {
+            angular.element(document.body).scope().trigger();
+        }
+
+        setInterval(
+            function()
+            {
+                eel.getTrigger();
+            }, 200);
+    </script>
+    <style>
+        .item:hover
+        {
+            background-color: #0FF2;
+        }
+        .item
+        {
+            position: relative;
+            width: 100%;
+            height: max-content;
+            border-bottom: solid 1px #FFF;
+            text-align: center;
+            color: #FFF;
+            font-family: monospace;
+            font-weight: bold;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            font-size: 20px;
+        }
+        .menu
+        {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 300px;
+            height: 100%;   
+            border-right: solid 1px #FFF;
+            background-color: #0FF2;
+        }
+        body
+        {
+            background-color: #000;
+        }
+    </style>
+</html>

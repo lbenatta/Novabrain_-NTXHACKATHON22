@@ -1,0 +1,46 @@
+[
+    {
+        "name":"ouvrir",
+        "child":
+        [
+            {
+                "name":"Ordinateur",
+                "exec":""
+            },
+            {
+                "name":"téléphone"
+            }
+        ]
+    },
+    {
+        "name":"analyser",
+        "child":
+        [
+            {
+                "name":"détéction d'object"
+            },
+            {
+                "name":"Reconnaisence facial"
+            },
+            {
+                "name":"éstimation de posture"
+            }
+        ]
+    },
+    {
+        "name":"envoyé",
+        "child":[
+            {
+                "name":"réseau",
+                "child":[
+                    {
+                        "name":"contacte"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name":"éditer",
+    }
+]
