@@ -20,3 +20,7 @@ NovaBrain captures the signals from the jaw to validate one of the options liste
 ## Expected results
 
 The ultimate goal of this project is to have the possibility to simply customize any type of application from the virtual assistant for a minimal number of signals to be detected. Moreover, to capture signals with a confidence index sufficient to reduce false positives and false negatives to a minimum.
+
+In practical application, Novabrain could find an application to reduce dependency and increase the autonomy of people with reduced mobility.
+
+
