@@ -14,7 +14,7 @@ More information can be obtained here : https://neurotechx.com/hackathon2022/
 
 ## How it works
 
-NovaBrain is a python application that acts as a virtual assistant interacting between the user and the phone. A menu is left at the disposal of the user, and commands are enumerated vocally via the headphones.
+NovaBrain is a python application that acts as a virtual assistant interacting between the user and the phone. A menu is left at the disposal of the user, and commands are enumerated vocally through the headphones.
 NovaBrain captures the signals from the jaw to validate one of the options listed vocally. To make this possible, a [BITalino](https://www.pluxbiosignals.com/collections/bitalino#:~:text=BITalino%20is%20an%20affordable%20%26%20open,and%20applications%20using%20physiological%20sensors.) device is used, and the expected signal is captured using [Opensignal](https://www.opensignal.com/).
 
 ## Expected results
